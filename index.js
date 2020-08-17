@@ -27,10 +27,13 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *  counter1 is a high order function.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *  counter1, it pulls the count variable from the counterMaker function after the function terminates
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *  counter1 is better for keeping score of multiple games at once, counter2 for only 1 game.
  *
 */
 
@@ -56,11 +59,10 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random() * 3);
 }
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +78,16 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
-}
+function finalScore(num, callback){
+  let home = 0
+  let away = 0
+  for(i = 0; i < num; i++){
+    home = home + callback()
+    away = away + callback()
+  }
+  return {"Home": home, "Away": away};
+} 
+console.log(finalScore(9, inning));
 
 /* Task 4: 
 
@@ -103,8 +110,15 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(callback2, num) {
+  let home = 0
+  let away = 0
+  for(i = 0; i< num; i++){
+    home = home + callback2()
+    away = away + callback2()
+    console.log(`Inning ${i+1}: Away:${away} - Home:${home}`);
+  }
+  console.log(`Final Score: Away:${away} - Home:${home}`);
 }
 
-
+scoreboard(inning, 9);
