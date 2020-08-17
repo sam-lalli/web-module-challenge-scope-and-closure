@@ -42,6 +42,7 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+  - Closure allows the child function to access data from the parent function even after the parent has finishd running
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +64,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+  - clousre is in the console.log where it accesses the variable "name". Name was passed in the parent function
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+  - the format of the console.log stays the same, the number rolled changes
 c. What is the lexical scope of `newRoll`? 
+  - only is availble in the child function.
 
 ### Task 2c - Exit Ticket
 
